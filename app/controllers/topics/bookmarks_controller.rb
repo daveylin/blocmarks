@@ -15,6 +15,7 @@ class Topics::BookmarksController < ApplicationController
      @topic = Topic.find(params[:topic_id])
      @bookmark = Bookmark.new(params.require(:bookmark).permit(:url))
      @bookmark.topic = @topic
+     @bookmark.user = current_user
      if @bookmark.save
        flash[:notice] = "Bookmark saved!"
        redirect_to @topic

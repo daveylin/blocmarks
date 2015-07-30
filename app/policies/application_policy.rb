@@ -27,7 +27,7 @@ class ApplicationPolicy
   end
 
   def edit?
-    update?
+    update? && (record.user == user)
   end
 
   def destroy?

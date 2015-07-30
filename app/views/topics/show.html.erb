@@ -1,7 +1,7 @@
 <center><h1><%= @topic.title %></h1></center>
-<center><%= link_to "Edit", edit_topic_path(@topic), class: 'btn btn-success' %> <%= link_to "Delete", @topic, method: :delete, class: 'btn btn-danger' %></center>
+<center><% if policy(@topic).edit? %><%= link_to "Edit", edit_topic_path(@topic), class: 'btn btn-success' %> <%= link_to "Delete", @topic, method: :delete, class: 'btn btn-danger' %><% end %></center>
 <br>
-<%= link_to "Add new bookmark", new_topic_bookmark_path(@topic), class: 'btn btn-success' %>
+<% if policy(Topic).create? %><%= link_to "Add new bookmark", new_topic_bookmark_path(@topic), class: 'btn btn-success' %><% end %> 
 <br>
 <br>
 <div class="row">
