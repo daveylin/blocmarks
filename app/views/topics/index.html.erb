@@ -10,8 +10,10 @@
               <br>
               <br>
               <% topic.bookmarks.each do |bookmark| %>
-                <h6><%= link_to bookmark.url, bookmark.url, :target => '_blank' %></h6>
-                <br>
+                  <%# if policy(bookmark).show? %>
+                  <h6><%= link_to bookmark.url, bookmark.url, :target => '_blank' %></h6>
+                  <br>
+                <%# end %>
               <% end %>
           </h4>
         </div>
