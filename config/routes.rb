@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'users/show'
+
   resources :topics do
     resources :bookmarks, except: [:index], controller: 'topics/bookmarks' do
       resources :likes, only: [:create, :destroy]
@@ -7,6 +9,7 @@ Rails.application.routes.draw do
   end
 
   devise_for :users
+  resources :users, only: [:show]
   get 'welcome/index'
   get 'welcome/about'
   
